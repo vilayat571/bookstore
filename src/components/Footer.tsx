@@ -21,6 +21,8 @@ const Footer = () => {
             {pagesURL.map((item) => {
               return (
                 <NavLink
+                key={item.id}
+
                   onClick={() => {
                     if (!token) {
                       alert("plase log in");
