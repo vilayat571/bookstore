@@ -6,13 +6,14 @@ import { useAppDispatch } from "../redux/store/store";
 import { addToCart } from "../redux/reducers/addToCartSlice";
 import { toast, ToastContainer } from "react-toastify";
 import { useState } from "react";
+import SEO from "../SEO/SEOComponent";
 
 const SingleProduct = () => {
   const { id } = useParams();
 
   // Fetch product details
   const productsData = useFetchData(`/product/details?productId=${id}`);
-  const singleProduct: IProductProps | null = productsData?.result;
+  const singleProduct: IProductProps = productsData?.result;
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const dispatch = useAppDispatch();
@@ -59,6 +60,14 @@ const SingleProduct = () => {
 
   return (
     <Layout>
+    <SEO
+        title={`BookStore | ${singleProduct?.title}`}
+        description={singleProduct?.subtitleShort || ''}
+        name="Products page"
+        type="website"
+        keywords="book, buy book, your book etc"
+      />
+  
       <ToastContainer />
       <div className="grid xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-2">
         {productsData != null && (

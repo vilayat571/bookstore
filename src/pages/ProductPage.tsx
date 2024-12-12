@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import Layout from "../layout/Layout";
 import { NavLink } from "react-router-dom";
 import useFetchData from "../utilities/hooks/useFetchData";
+import SEO from "../SEO/SEOComponent";
 
 export interface IProductProps {
   id: string;
@@ -20,6 +21,7 @@ const ProductPage = () => {
 
   const uri = import.meta.env.VITE_API_URL;
 
+  // throttle function I got from internet
   function throttle<T extends (...args: any[]) => unknown>(
     func: T,
     limit: number
@@ -43,16 +45,13 @@ const ProductPage = () => {
     };
   }
 
+  const productsData = useFetchData("/product/explore");
 
-  const productsData=useFetchData('/product/explore')
-
-
-   useEffect(() => {
+  useEffect(() => {
     if (productsData) {
-      setProducts(productsData.result?.products || []);
+      setProducts(productsData.products || []);
     }
   }, [productsData]);
-
 
   const searchProducts = useCallback(
     throttle((searchTerm: string) => {
@@ -94,6 +93,14 @@ const ProductPage = () => {
 
   return (
     <Layout>
+      <SEO
+        title={`BookStore | Products`}
+        description="This is the Products page of Bookstore company"
+        name="Products page"
+        type="website"
+        keywords="book, buy book, your book etc"
+      />
+
       <div className="flex w-full flex-col items-center">
         <form className="xl:w-1/2 lg:w-1/2 md:w-4/5 sm:w-11/12 mx-auto mt-12">
           <input

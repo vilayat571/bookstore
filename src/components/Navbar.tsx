@@ -1,9 +1,10 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { pagesURL } from "../utilities/constants/PagesURL";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faClose } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { useAppSelector } from "../redux/store/store";
+import Logo from "../atoms/Logo";
 
 /*
  Some key points
@@ -25,13 +26,7 @@ const Navbar = () => {
 
   return (
     <nav className="flex  py-8 mb-6 flez items-center justify-between">
-      <Link
-        aria-label="this is the link to redirect to home page"
-        to="/"
-        className="text-2xl text-black"
-      >
-        BookStore
-      </Link>
+      <Logo />
 
       <div className="xl:flex lg:flex md:hidden sm:hidden">
         {pagesURL.map((item) => {
@@ -53,12 +48,15 @@ const Navbar = () => {
 
       <div className="xl:flex lg:flex md:hidden sm:hidden items-center justify-between gap-5">
         <NavLink
-         onClick={() => {
-          if (!token) {
-            alert("plase log in");
-          }
-        }}
-        to="/cart">Cart <sup>{productsCart.length}</sup> </NavLink>
+          onClick={() => {
+            if (!token) {
+              alert("plase log in");
+            }
+          }}
+          to="/cart"
+        >
+          Cart <sup>{productsCart.length}</sup>{" "}
+        </NavLink>
         <NavLink className="bg-black text-white px-5 py-4 rounded" to="/login">
           {!token ? "Login" : "frazex@info"}
         </NavLink>
@@ -71,15 +69,9 @@ const Navbar = () => {
       />
 
       {sidebar && (
-        <div className="fixed w-full top-0 left-0 h-screen bg-white flex flex-col px-6">
+        <div className="fixed w-full top-0 left-0 h-screen bg-white z-10 flex flex-col px-6">
           <div className="flex py-8 justify-between items-center">
-            <Link
-              aria-label="this is the link to redirect to home page"
-              to="/"
-              className="text-2xl text-black"
-            >
-              BookStore
-            </Link>
+            <Logo />
             <FontAwesomeIcon
               onClick={() => setSidebar(!sidebar)}
               icon={faClose}
@@ -102,13 +94,16 @@ const Navbar = () => {
                 </NavLink>
               );
             })}
-            <NavLink 
-             onClick={() => {
-              if (!token) {
-                alert("plase log in");
-              }
-            }}
-            to="/cart">Cart</NavLink>
+            <NavLink
+              onClick={() => {
+                if (!token) {
+                  alert("plase log in");
+                }
+              }}
+              to="/cart"
+            >
+              Cart
+            </NavLink>
             <NavLink
               className="bg-black text-white px-5 py-4 rounded"
               to="/login"

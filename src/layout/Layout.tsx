@@ -15,9 +15,11 @@ const Layout: React.FC<{ children: ReactNode }> = ({ children }) => {
   }, [navigate]);
 
   return (
-    <div className="xl:w-4/5 lg:w-4/5 md:w-4/5 sm:w-11/12 mx-auto">
-      <Navbar />
-      {children}
+    <div>
+      <div className="xl:w-4/5 lg:w-4/5 md:w-4/5 sm:w-11/12 mx-auto">
+        <Navbar />
+        {children}
+      </div>
       <Footer />
     </div>
   );

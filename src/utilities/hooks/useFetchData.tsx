@@ -4,10 +4,15 @@ import { useEffect, useState } from "react";
 
 // because of token repeating and same process I made this Custom Hook
 
+
+interface IResult{
+  result:any
+}
+
 const useFetchData = (url: string) => {
   const uri = import.meta.env.VITE_API_URL;
 
-  const [fetchedData, setFetchedData] = useState(null);
+  const [fetchedData, setFetchedData] = useState<IResult | null>(null);
 
   useEffect(() => {
     const token = localStorage.getItem("token") || "";
@@ -25,7 +30,7 @@ const useFetchData = (url: string) => {
       .catch((err) => console.error("Error fetching products:", err));
   }, [uri, url]);
 
-  return fetchedData;
+  return fetchedData?.result;
 };
 
 export default useFetchData;
