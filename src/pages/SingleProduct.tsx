@@ -13,7 +13,7 @@ const SingleProduct = () => {
 
   // Fetch product details
   const productsData = useFetchData(`/product/details?productId=${id}`);
-  const singleProduct: IProductProps = productsData?.result;
+  const singleProduct: IProductProps = productsData;
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const dispatch = useAppDispatch();
