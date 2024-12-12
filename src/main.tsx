@@ -1,4 +1,3 @@
-import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./pages/App";
 import Notfound from "./pages/Notfound";
@@ -10,9 +9,10 @@ import Login from "./pages/Login";
 import ProductPage from "./pages/ProductPage";
 import SingleProduct from "./pages/SingleProduct";
 import Cart from "./pages/Cart";
+import ReactDOM from "react-dom/client";
 
 
-createRoot(document.getElementById("root")!).render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
     <HelmetProvider>
       <Provider store={store}>
         <BrowserRouter>
