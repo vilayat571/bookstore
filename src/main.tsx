@@ -11,20 +11,19 @@ import SingleProduct from "./pages/SingleProduct";
 import Cart from "./pages/Cart";
 import ReactDOM from "react-dom/client";
 
-
 ReactDOM.createRoot(document.getElementById("root")!).render(
-    <HelmetProvider>
-      <Provider store={store}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<App />} />
-            <Route path={`*`} element={<Notfound />} />
-            <Route path={`/login`} element={<Login />} />
-            <Route path={`/cart`} element={<Cart />} />
-            <Route path={`/products`} element={<ProductPage />} />
-            <Route path={`/products/:id`} element={<SingleProduct />} />
-          </Routes>
-        </BrowserRouter>
-      </Provider>
-    </HelmetProvider>
+  <HelmetProvider>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path={`*`} element={<Notfound />} />
+          <Route path={`/login`} element={<Login />} />
+          <Route path={`/cart`} element={<Cart />} />
+          <Route path={`/products`} element={<ProductPage />} />
+          <Route path={`/products/:id`} element={<SingleProduct />} />
+        </Routes>
+      </BrowserRouter>
+    </Provider>
+  </HelmetProvider>
 );
