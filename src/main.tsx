@@ -1,4 +1,3 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./pages/App";
@@ -12,14 +11,8 @@ import ProductPage from "./pages/ProductPage";
 import SingleProduct from "./pages/SingleProduct";
 import Cart from "./pages/Cart";
 
-/* 
-KeyPoints
-1. Adding not found page
-2. Adding HelmetProvide for the SEO component
-*/
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
     <HelmetProvider>
       <Provider store={store}>
         <BrowserRouter>
@@ -34,5 +27,4 @@ createRoot(document.getElementById("root")!).render(
         </BrowserRouter>
       </Provider>
     </HelmetProvider>
-  </StrictMode>
 );
